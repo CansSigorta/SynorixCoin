@@ -16,17 +16,10 @@ export function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link
           href="/"
-          className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-synorix-cyan/60 rounded-lg"
+          className="group flex items-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-synorix-cyan/60"
+          aria-label={`${SITE.name} home`}
         >
-          <SynorixLogo className="h-9 w-9 shrink-0 transition-transform group-hover:scale-105" />
-          <div className="leading-tight">
-            <span className="block text-sm font-semibold tracking-tight text-white">
-              {SITE.name}
-            </span>
-            <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-synorix-cyan/90">
-              {SITE.ticker}
-            </span>
-          </div>
+          <SynorixLogo className="h-10 max-h-10 w-auto max-w-[140px] shrink-0 transition-transform group-hover:scale-[1.02] sm:max-w-[160px]" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">

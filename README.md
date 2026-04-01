@@ -1,4 +1,4 @@
-# Synorix (SNRX) 
+# Synorix (SNRX)
 
 Modern, premium, dark-themed cryptocurrency website for **Synorix (SNRX)**.
 

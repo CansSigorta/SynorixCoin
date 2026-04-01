@@ -1,26 +1,32 @@
-export function SynorixLogo({ className = "" }: { className?: string }) {
+import Image from "next/image";
+import { SITE } from "@/lib/site";
+
+type SynorixLogoProps = {
+  className?: string;
+  decorative?: boolean;
+  priority?: boolean;
+};
+
+export function SynorixLogo({
+  className = "",
+  decorative = true,
+  priority = false,
+}: SynorixLogoProps) {
+  const src = `${SITE.logoPath}?v=${SITE.logoVersion}`;
+
   return (
-    <svg
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden
-    >
-      <defs>
-        <linearGradient id="snrx-ring" x1="0" y1="0" x2="40" y2="40">
-          <stop stopColor="#00f0ff" />
-          <stop offset="1" stopColor="#22d3ee" />
-        </linearGradient>
-      </defs>
-      <circle cx="20" cy="20" r="18" stroke="url(#snrx-ring)" strokeWidth="2.5" />
-      <path
-        d="M12 20h16M20 12v16"
-        stroke="#00f0ff"
-        strokeWidth="2"
-        strokeLinecap="round"
+    <span className={`inline-flex items-center justify-center ${className}`}>
+      <Image
+        src={src}
+        alt={decorative ? "" : SITE.logoAlt}
+        width={800}
+        height={1000}
+        sizes="(max-width: 768px) 70vw, 320px"
+        className="h-full w-auto max-w-full object-contain object-center"
+        draggable={false}
+        priority={priority}
+        unoptimized
       />
-      <circle cx="20" cy="20" r="4" fill="#00f0ff" fillOpacity="0.9" />
-    </svg>
+    </span>
   );
 }

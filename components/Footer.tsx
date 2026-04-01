@@ -10,16 +10,8 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
-            <Link href="/" className="flex items-center gap-3">
-              <SynorixLogo className="h-10 w-10" />
-              <div>
-                <span className="block text-base font-semibold text-white">
-                  {SITE.name}
-                </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-synorix-cyan/80">
-                  {SITE.ticker}
-                </span>
-              </div>
+            <Link href="/" className="inline-flex max-w-[200px]">
+              <SynorixLogo className="h-14 max-h-14 w-auto" />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-zinc-400">
               {SITE.tagline}. Built on proven ideas—refined for speed, fees, and everyday

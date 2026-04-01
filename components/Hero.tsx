@@ -21,7 +21,11 @@ export function Hero() {
         >
           <div className="relative">
             <div className="absolute inset-0 animate-pulse rounded-full bg-synorix-cyan/20 blur-2xl" />
-            <SynorixLogo className="relative h-24 w-24 drop-shadow-glow sm:h-28 sm:w-28" />
+            <SynorixLogo
+              decorative={false}
+              priority
+              className="relative h-44 max-h-[min(50vh,360px)] w-auto max-w-[min(90vw,320px)] drop-shadow-glow sm:h-52 sm:max-w-[360px]"
+            />
           </div>
         </motion.div>
 

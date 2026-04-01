@@ -58,6 +58,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.svg",
+    apple: "/logo.png",
   },
 };
 
@@ -66,6 +67,7 @@ const jsonLd = {
   "@type": "Organization",
   name: SITE.name,
   url: SITE.url,
+  logo: `${SITE.url}${SITE.logoPath}`,
   description: SITE.description,
   slogan: SITE.tagline,
 };
