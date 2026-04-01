@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-labelledby="synorixLogoTitle">
+  <title id="synorixLogoTitle">Synorix</title>
+  <defs>
+    <linearGradient id="synorixLogoStroke" x1="64" y1="96" x2="448" y2="416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00f0ff"/>
+      <stop offset="0.45" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#67e8f9"/>
+    </linearGradient>
+    <linearGradient id="synorixLogoGlow" x1="256" y1="64" x2="256" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00f0ff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#00f0ff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="synorixLogoBlur" x="0" y="0" width="512" height="512" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Soft outer glow -->
+  <circle cx="256" cy="256" r="168" fill="url(#synorixLogoGlow)"/>
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="188" stroke="url(#synorixLogoStroke)" stroke-width="10" stroke-opacity="0.45"/>
+  <!-- Main ring -->
+  <circle cx="256" cy="256" r="164" stroke="url(#synorixLogoStroke)" stroke-width="14" filter="url(#synorixLogoBlur)"/>
+  <!-- SNRX monogram: stylized S + energy nodes -->
+  <path
+    d="M312 168c28 0 52 22 52 52 0 28-18 46-44 54l-36 12c-12 4-20 14-20 26 0 16 14 28 32 28h8c18 0 32-10 38-24l44 22c-12 34-46 58-86 58-48 0-84-34-84-78 0-36 24-60 54-70l34-12c16-6 26-18 26-34 0-22-18-38-42-38h-12c-26 0-46 16-54 38l-48-20c14-42 52-72 100-72h20z"
+    fill="url(#synorixLogoStroke)"
+    opacity="0.95"
+  />
+  <circle cx="178" cy="200" r="14" fill="#0a0e1a" stroke="#00f0ff" stroke-width="4"/>
+  <circle cx="334" cy="312" r="14" fill="#0a0e1a" stroke="#00f0ff" stroke-width="4"/>
+</svg>
