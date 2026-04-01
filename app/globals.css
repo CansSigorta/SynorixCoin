@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #00f0ff;
+  --bg-deep: #0a0e1a;
+  --bg-void: #000000;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen antialiased text-zinc-100;
+  background: linear-gradient(165deg, #0a0e1a 0%, #050810 45%, #000000 100%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(0, 240, 255, 0.25);
+  color: #f4f4f5;
+}
+
+@layer utilities {
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #00f0ff 0%, #22d3ee 50%, #67e8f9 100%);
+  }
+}
