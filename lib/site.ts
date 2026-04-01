@@ -5,6 +5,8 @@ export const SITE = {
   url: "https://synorixcoin.com",
   description:
     "Synorix (SNRX) is a SHA-256 proof-of-work cryptocurrency with 2.5-minute blocks, near-zero fees, optional privacy, and a 21 million fixed supply—inspired by Bitcoin’s sound design.",
+  logoPath: "/logo.svg",
+  logoAlt: "Synorix logo",
 } as const;
 
 export const NAV_LINKS = [
