@@ -12,6 +12,12 @@ export const SITE = {
   logoVersion: "1",
 } as const;
 
+<<<<<<< HEAD
+=======
+/** Public Synorix Core Git URL when published (e.g. https://github.com/org/synorix-core) */
+export const SYNORIX_CORE_REPO_URL: string | null = null;
+
+>>>>>>> 5fc9d50 (Initial commit)
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
@@ -20,4 +26,8 @@ export const NAV_LINKS = [
   { href: "/roadmap", label: "Roadmap" },
   { href: "/tokenomics", label: "Tokenomics" },
   { href: "/community", label: "Community" },
+<<<<<<< HEAD
+=======
+  { href: "/testnet", label: "Testnet" },
+>>>>>>> 5fc9d50 (Initial commit)
 ] as const;
