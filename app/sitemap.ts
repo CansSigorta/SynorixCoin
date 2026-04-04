@@ -9,10 +9,7 @@ const paths = [
   "/roadmap",
   "/tokenomics",
   "/community",
-<<<<<<< HEAD
-=======
   "/testnet",
->>>>>>> 5fc9d50 (Initial commit)
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

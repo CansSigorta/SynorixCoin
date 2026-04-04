@@ -20,10 +20,7 @@ Tagline: **Faster and more usable evolution of Bitcoin**
 - `/roadmap`
 - `/tokenomics`
 - `/community`
-<<<<<<< HEAD
-=======
 - `/testnet`
->>>>>>> 5fc9d50 (Initial commit)
 
 ## Design
 
