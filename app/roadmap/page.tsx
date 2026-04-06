@@ -11,25 +11,27 @@ export const metadata: Metadata = {
 
 const phases = [
   {
-    phase: "Phase 1 — Foundation",
+    phase: "Phase 1 — Foundation (Q2 2026)",
     status: "In progress",
     items: [
+      "April 10: Testnet Launch",
       "Public specification and reference implementation hardening",
       "Testnet stability runs and miner onboarding documentation",
       "Block explorer and network health dashboards",
     ],
   },
   {
-    phase: "Phase 2 — Ecosystem",
+    phase: "Phase 2 — Ecosystem (Q3 2026)",
     status: "Planned",
     items: [
+      "Mainnet Genesis & Treasury Activation",
       "Wallet integrations and hardware wallet support where applicable",
       "Developer SDKs and payment tooling for merchants",
       "Educational content that honors Bitcoin and explains Synorix clearly",
     ],
   },
   {
-    phase: "Phase 3 — Adoption",
+    phase: "Phase 3 — Adoption (2027+)",
     status: "Planned",
     items: [
       "Partnerships with aligned projects and infrastructure providers",

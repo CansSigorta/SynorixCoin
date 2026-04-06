@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Features",
   description:
-    "2.5-minute blocks, near-zero fees, optional privacy, 21 million fixed supply, and SHA-256 proof of work—Synorix features explained.",
+    "2.5-minute blocks, near-zero fees, on-chain treasury, dynamic difficulty, fixed supply, and SHA-256 proof of work—Synorix features explained.",
   alternates: { canonical: "/features" },
 };
 
@@ -19,8 +19,12 @@ const items = [
     body: "By keeping demand and block space dynamics healthy—and by designing for efficiency—Synorix aims for fees that stay practical for small transfers, tipping, and frequent use.",
   },
   {
-    title: "Optional privacy",
-    body: "Default transparency preserves auditability and public verifiability—core strengths inherited from Bitcoin’s model. When appropriate, optional privacy features can help protect sensitive commercial or personal contexts.",
+    title: "On-Chain Treasury",
+    body: "A predefined portion of network fees is automatically routed to a transparent Treasury to fund liquidity, token buybacks & burns, and ecosystem growth.",
+  },
+  {
+    title: "Dynamic Difficulty (DDA)",
+    body: "Replaces legacy retargeting with a modern algorithm, ensuring stable 2.5-minute block generation regardless of network hashrate fluctuations.",
   },
   {
     title: "21 million fixed supply",

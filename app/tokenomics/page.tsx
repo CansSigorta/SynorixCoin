@@ -26,10 +26,15 @@ export default function TokenomicsPage() {
           </p>
           <h2>Issuance</h2>
           <p>
-            New SNRX enters circulation through block rewards to miners securing the network via
-            SHA-256 proof of work. Emission steps down over time as blocks progress, converging toward
-            the cap—rewarding early security while preserving long-term predictability.
+            Initial Block Reward: 50 SNRX. To maintain the 4-year cycle with 4x faster blocks,
+            halving occurs every 840,000 blocks.
           </p>
+          <h2>Treasury Allocation</h2>
+          <ul>
+            <li>40% — Liquidity Provision</li>
+            <li>30% — Buyback &amp; Burn</li>
+            <li>30% — Ecosystem Grants &amp; Development</li>
+          </ul>
           <h2>Fees</h2>
           <p>
             Transaction fees complement block rewards, especially as subsidies decline. Synorix is

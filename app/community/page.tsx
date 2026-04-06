@@ -17,13 +17,13 @@ const links = [
   },
   {
     name: "Developer discussion",
-    href: "#",
-    detail: "Placeholder — add forum or GitHub discussions URL when live.",
+    href: "https://github.com/Synorixz/synorix",
+    detail: "Join the development and review the codebase.",
   },
   {
     name: "Social updates",
-    href: "#",
-    detail: "Placeholder — add X/Telegram/Discord links when official accounts are published.",
+    href: "https://twitter.com/SynorixCoin",
+    detail: "Follow our official X account for announcements.",
   },
 ] as const;
 
@@ -70,9 +70,9 @@ export default function CommunityPage() {
         </ul>
         <FadeIn className="mt-12 rounded-2xl border border-white/10 bg-black/30 p-6 text-center">
           <p className="text-sm text-zinc-400">
-            Replace placeholder links with official endpoints before marketing campaigns. Until then,
-            bookmark <span className="font-mono text-synorix-cyan/90">synorixcoin.com</span> as the
-            source of truth.
+            Official links are kept up to date on this page. Bookmark{" "}
+            <span className="font-mono text-synorix-cyan/90">synorixcoin.com</span> as the source of
+            truth.
           </p>
         </FadeIn>
       </div>
