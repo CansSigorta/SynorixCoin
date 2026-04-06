@@ -16,6 +16,7 @@ Tagline: **Faster and more usable evolution of Bitcoin**
 - `/` (Home)
 - `/about`
 - `/features`
+- `/litepaper`
 - `/whitepaper`
 - `/roadmap`
 - `/tokenomics`

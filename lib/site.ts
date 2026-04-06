@@ -19,6 +19,7 @@ export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/features", label: "Features" },
+  { href: "/litepaper", label: "Litepaper" },
   { href: "/whitepaper", label: "Whitepaper" },
   { href: "/roadmap", label: "Roadmap" },
   { href: "/tokenomics", label: "Tokenomics" },

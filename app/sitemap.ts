@@ -5,6 +5,7 @@ const paths = [
   "",
   "/about",
   "/features",
+  "/litepaper",
   "/whitepaper",
   "/roadmap",
   "/tokenomics",
