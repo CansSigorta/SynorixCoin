@@ -5,10 +5,12 @@ import { SYNORIX_CORE_REPO_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const TESTNET_RELEASES_URL = "https://github.com/Synorixz/synorix/releases";
+
 export const metadata: Metadata = {
   title: "Testnet",
   description:
-    "Synorix Core public testnet: ports, bech32 prefix, DNS seed, and how to run synorixd / synorix-cli with -testnet.",
+    "Synorix testnet wallet download, network ports, bech32 prefix, DNS seed, and how to run synorixd / synorix-cli with -testnet.",
   alternates: { canonical: "/testnet" },
 };
 
@@ -46,6 +48,26 @@ export default function TestnetPage() {
             <strong>Important:</strong> Testnet coins have <strong>no monetary value</strong> and must not be used
             for production or as a stand-in for real funds. They can be reset or inflated by the network at any
             time.
+          </div>
+
+          <h2>Download Testnet Wallet</h2>
+          <p>
+            Windows testnet desktop wallet builds are published on GitHub Releases. Download the latest
+            pre-release package, then follow setup notes before first run.
+          </p>
+          <div className="not-prose rounded-xl border border-synorix-cyan/30 bg-synorix-cyan/5 p-5">
+            <a
+              href={TESTNET_RELEASES_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center rounded-full bg-synorix-cyan px-6 py-2.5 text-sm font-semibold text-synorix-navy transition hover:bg-cyan-300"
+            >
+              Download Testnet Wallet (GitHub Releases)
+            </a>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+              Latest published pre-release examples include <code className="font-mono">v0.1.7</code>.
+              If SmartScreen appears, use “More info” and verify the publisher before running.
+            </p>
           </div>
 
           <h2>Network parameters</h2>
