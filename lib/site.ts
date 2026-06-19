@@ -25,4 +25,5 @@ export const NAV_LINKS = [
   { href: "/community", label: "Community" },
   { href: "/testnet", label: "Testnet" },
   { href: "/wallet", label: "Wallet" },
+  { href: "/swap", label: "Buy SNRX" },
 ] as const;
