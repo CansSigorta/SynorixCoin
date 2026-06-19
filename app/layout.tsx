@@ -3,6 +3,7 @@ import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { WalletProvider } from "@/components/WalletProvider";
 import { SITE } from "@/lib/site";
 
 const outfit = Outfit({
@@ -84,9 +85,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <WalletProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </WalletProvider>
       </body>
     </html>
   );

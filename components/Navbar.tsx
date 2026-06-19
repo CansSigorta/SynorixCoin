@@ -6,6 +6,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, SITE } from "@/lib/site";
 import { SynorixLogo } from "@/components/SynorixLogo";
+import { WalletWidget } from "@/components/WalletWidget";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -22,6 +23,7 @@ export function Navbar() {
           <SynorixLogo className="h-10 max-h-10 w-auto max-w-[140px] shrink-0 transition-transform group-hover:scale-[1.02] sm:max-w-[160px]" />
         </Link>
 
+        <div className="flex items-center gap-3">
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
@@ -64,6 +66,8 @@ export function Navbar() {
             )}
           </svg>
         </button>
+          <WalletWidget />
+        </div>
       </div>
 
       <AnimatePresence>
