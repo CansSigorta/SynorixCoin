@@ -24,4 +24,5 @@ export const NAV_LINKS = [
   { href: "/tokenomics", label: "Tokenomics" },
   { href: "/community", label: "Community" },
   { href: "/testnet", label: "Testnet" },
+  { href: "/wallet", label: "Wallet" },
 ] as const;
