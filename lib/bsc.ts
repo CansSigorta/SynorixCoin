@@ -37,11 +37,11 @@ export const BSC_NETWORKS: Record<"mainnet" | "testnet", BscNetwork> = {
 };
 
 export const ACTIVE_BSC: BscNetwork =
-  BSC_NETWORKS[(process.env.NEXT_PUBLIC_BSC_NETWORK as "mainnet" | "testnet") || "testnet"];
+  BSC_NETWORKS[(process.env.NEXT_PUBLIC_BSC_NETWORK as "mainnet" | "testnet") || "mainnet"];
 
-/** Address that collects buyers' USDT (the liquidity wallet). Set per deployment. */
+/** Address that collects buyers' USDT (the liquidity wallet). */
 export const BSC_RECEIVER: string =
-  process.env.NEXT_PUBLIC_BSC_RECEIVER || "";
+  process.env.NEXT_PUBLIC_BSC_RECEIVER || "0xCF9f877f80a488B38609234575d8b251c7b76c8e";
 
 type Eip1193 = {
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
