@@ -30,12 +30,8 @@ export default function SwapPage() {
       {/* Live price */}
       <GlassCard className="mb-4 p-5 text-center">
         <div className="text-xs uppercase tracking-wide text-zinc-500">SNRX Price</div>
-        <div className="mt-1 text-3xl font-extrabold">{price && !price.error ? `$${fnum(price.price, 8)}` : "…"}</div>
-        {price && !price.error && (
-          <div className="mt-2 text-xs text-zinc-500">
-            Pool: {fnum(price.usdt_reserve, 2)} USDT · {fnum(price.snrx_reserve, 0)} SNRX
-          </div>
-        )}
+        <div className="mt-1 text-3xl font-extrabold">{price && !price.error ? `$${fnum(price.price, 6)}` : "…"}</div>
+        <div className="mt-2 text-xs text-zinc-500">Live market price · moves with demand</div>
       </GlassCard>
 
       {/* MetaMask buy */}
