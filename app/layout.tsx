@@ -47,11 +47,13 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: `${SITE.name} (${SITE.ticker})`,
     description: SITE.description,
+    images: [{ url: "/synorix-coin.jpg", width: 840, height: 1240, alt: `${SITE.name} Coin` }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} (${SITE.ticker})`,
     description: SITE.description,
+    images: ["/synorix-coin.jpg"],
   },
   robots: {
     index: true,
