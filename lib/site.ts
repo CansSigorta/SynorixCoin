@@ -23,6 +23,6 @@ export const NAV_LINKS = [
   { href: "/roadmap", label: "Roadmap" },
   { href: "/tokenomics", label: "Tokenomics" },
   { href: "/community", label: "Community" },
-  { href: "/testnet", label: "Testnet" },
+  { href: "/mining", label: "Mine" },
   { href: "/swap", label: "Buy SNRX" },
 ] as const;
