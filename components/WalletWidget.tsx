@@ -41,6 +41,11 @@ export function WalletWidget() {
   useEffect(() => { if (!open) { setView("main"); setMsg(""); } }, [open]);
 
   const flash = (m: string) => { setMsg(m); setTimeout(() => setMsg(""), 2500); };
+  const resetWallets = () => {
+    if (window.confirm("This permanently erases all wallets stored in this browser. They can ONLY be recovered with their 12-word recovery phrase. Continue?")) {
+      w.resetAll(); setView("main"); flash("All wallets reset — start fresh");
+    }
+  };
   if (!w.ready) return null;
 
   const label = w.active
@@ -83,7 +88,10 @@ export function WalletWidget() {
                 <button className={gbtn} onClick={() => setView("receive")}>Receive</button>
                 <button className={gbtn} onClick={() => { setSTo(""); setSAmt(""); setView(w.unlocked ? "send" : "unlock"); }}>Send</button>
               </div>
-              <button className="mt-3 w-full text-center text-[11px] text-zinc-500 hover:text-zinc-300" onClick={() => { setUPw(""); setView("backup"); }}>Show recovery phrase</button>
+              <div className="mt-3 flex items-center justify-between text-[11px]">
+                <button className="text-zinc-500 hover:text-zinc-300" onClick={() => { setUPw(""); setView("backup"); }}>Show recovery phrase</button>
+                <button className="text-rose-400/80 hover:text-rose-300" onClick={resetWallets}>Reset</button>
+              </div>
             </>
           )}
 
@@ -106,6 +114,7 @@ export function WalletWidget() {
               <label className={lbl}>Wallet password</label>
               <input className={inp} type="password" value={uPw} onChange={(e) => setUPw(e.target.value)} />
               <button className={pbtn} disabled={busy} onClick={async () => { setBusy(true); const ok = await w.unlock(uPw); setBusy(false); if (ok) { setUPw(""); setView("send"); } else flash("Wrong password"); }}>Unlock</button>
+              <button className="mt-2 w-full text-center text-[11px] text-rose-400 hover:text-rose-300" onClick={resetWallets}>Forgot password? Reset &amp; start over</button>
             </>
           )}
 
@@ -193,6 +202,7 @@ export function WalletWidget() {
                 ))}
               </div>
               <button className={`${gbtn} mt-2`} onClick={() => { setCName(""); setCPw(""); setCPw2(""); setView("create"); }}>+ New Wallet</button>
+              <button className="mt-2 w-full rounded-lg border border-rose-500/30 bg-rose-500/10 py-2 text-xs font-semibold text-rose-300 hover:bg-rose-500/20" onClick={resetWallets}>Reset all wallets</button>
             </>
           )}
         </div>

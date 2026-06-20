@@ -29,6 +29,7 @@ type Ctx = {
   switchWallet: (id: string) => void;
   send: (to: string, amount: number) => Promise<{ txid: string }>;
   reveal: (pw: string) => Promise<string>;
+  resetAll: () => void;
   refresh: () => void;
 };
 
@@ -106,6 +107,12 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     reveal: async (pw) => {
       if (!active) throw new Error("No wallet");
       return wallet.revealMnemonic(active, pw);
+    },
+    resetAll: () => {
+      try { localStorage.removeItem(KEY); } catch {}
+      pwRef.current.clear();
+      setStore({ wallets: [], activeId: "" });
+      setBalance(null); setAddress("");
     },
   };
 
