@@ -32,6 +32,6 @@ export const SYNORIX_NETWORKS: Record<"mainnet" | "testnet", SnrxNet> = {
   },
 };
 
-// Active network for the web wallet (testnet until mainnet launch).
+// Active network for the web wallet. Mainnet is live.
 export const ACTIVE_NETWORK: "mainnet" | "testnet" =
-  (process.env.NEXT_PUBLIC_SNRX_NETWORK as "mainnet" | "testnet") || "testnet";
+  (process.env.NEXT_PUBLIC_SNRX_NETWORK as "mainnet" | "testnet") || "mainnet";
