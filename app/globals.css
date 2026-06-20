@@ -4,6 +4,7 @@
 
 :root {
   --accent: #00f0ff;
+  --accent-violet: #7c5cff;
   --bg-deep: #0a0e1a;
   --bg-void: #000000;
 }
@@ -14,8 +15,19 @@ html {
 
 body {
   @apply min-h-screen antialiased text-zinc-100;
-  background: linear-gradient(165deg, #0a0e1a 0%, #050810 45%, #000000 100%);
+  background: linear-gradient(165deg, #0a0e1a 0%, #050810 45%, #02040a 100%);
   background-attachment: fixed;
+}
+
+/* Subtle grain so large dark areas never look flat — premium depth. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 ::selection {
@@ -23,9 +35,63 @@ body {
   color: #f4f4f5;
 }
 
+/* Premium thin scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 92, 255, 0.25);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.4);
+  background-clip: content-box;
+}
+
 @layer utilities {
   .text-gradient-cyan {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, #00f0ff 0%, #22d3ee 50%, #67e8f9 100%);
   }
+  .text-gradient-iris {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #67e8f9 0%, #38bdf8 45%, #a78bfa 100%);
+  }
+  /* Glass surface for premium cards */
+  .glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+  }
+  .glass-hover {
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .glass-hover:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8), 0 0 40px -16px rgba(0, 240, 255, 0.4);
+  }
+  /* Hairline gradient divider */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124, 92, 255, 0.4), rgba(0, 240, 255, 0.4), transparent);
+  }
+  /* Animated conic ring for badges/avatars */
+  .ring-conic {
+    background: conic-gradient(from 0deg, #00f0ff, #7c5cff, #38bdf8, #00f0ff);
+  }
+}
+
+/* Ensure content sits above the grain layer */
+main,
+header,
+footer {
+  position: relative;
+  z-index: 1;
 }
