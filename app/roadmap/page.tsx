@@ -5,48 +5,61 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Roadmap",
   description:
-    "Synorix development roadmap: testnet, ecosystem tooling, exchange outreach, and community programs.",
+    "Synorix roadmap: mainnet is live with fair LWMA mining, a non-custodial wallet, an explorer, and an in-site market. Next: liquidity, community, and resilience.",
   alternates: { canonical: "/roadmap" },
 };
 
 const phases = [
   {
-    phase: "Phase 1 — Foundation (Q2 2026)",
+    phase: "Phase 1 — Mainnet Launch",
+    status: "Live",
+    items: [
+      "SHA-256 Proof-of-Work mainnet — live",
+      "LWMA per-block difficulty (fair launch, no fast-minting)",
+      "Non-custodial web wallet (keys stay in your browser)",
+      "Open mining: prebuilt node + DNS seed auto-discovery",
+      "Public block explorer",
+      "In-site market (buy with USDT, manual sell)",
+      "Open-source node, wallet & site",
+    ],
+  },
+  {
+    phase: "Phase 2 — Liquidity & Community",
     status: "In progress",
     items: [
-      "April 10: Testnet Launch",
-      "Public specification and reference implementation hardening",
-      "Testnet stability runs and miner onboarding documentation",
-      "Block explorer and network health dashboards",
+      "Deepen real liquidity in the in-site market",
+      "Grow the miner base — more independent nodes",
+      "Backup nodes + redundancy for network resilience",
+      "Community channels (Telegram / X) and clear onboarding",
+      "Transparency: live supply, treasury, and emission stats",
     ],
   },
   {
-    phase: "Phase 2 — Ecosystem (Q3 2026)",
+    phase: "Phase 3 — Growth & Utility",
     status: "Planned",
     items: [
-      "Mainnet Genesis & Treasury Activation",
-      "Wallet integrations and hardware wallet support where applicable",
-      "Developer SDKs and payment tooling for merchants",
-      "Educational content that honors Bitcoin and explains Synorix clearly",
-    ],
-  },
-  {
-    phase: "Phase 3 — Adoption (2027+)",
-    status: "Planned",
-    items: [
-      "Partnerships with aligned projects and infrastructure providers",
+      "A clear, honest use case — a real reason to hold and use SNRX",
+      "Broader access (DEX/CEX) explored responsibly and transparently",
+      "Partnerships with aligned projects and infrastructure",
       "Community grants for open-source tooling",
-      "Liquidity and listing discussions conducted responsibly and transparently",
+      "Mobile wallet & payment tooling",
     ],
   },
 ] as const;
+
+const statusColor: Record<string, string> = {
+  Live: "border-emerald-400/40 bg-emerald-400/10 text-emerald-300",
+  "In progress": "border-synorix-cyan/40 bg-synorix-cyan/10 text-synorix-cyan",
+  Planned: "border-white/10 bg-white/5 text-zinc-400",
+};
 
 export default function RoadmapPage() {
   return (
     <>
       <PageHeader
-        title="Roadmap"
-        subtitle="Shipping in public—milestones may shift, but priorities stay clear."
+        eyebrow="Roadmap"
+        title="Built in public"
+        subtitle="Mainnet is live. Here's what's done, what's underway, and what's next — honestly."
       />
       <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
         <ol className="relative space-y-10 border-l border-white/10 pl-8">
@@ -58,7 +71,7 @@ export default function RoadmapPage() {
                 </span>
                 <div className="flex flex-wrap items-baseline gap-3">
                   <h2 className="text-lg font-semibold text-white">{p.phase}</h2>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-synorix-cyan/90">
+                  <span className={`rounded-full border px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wider ${statusColor[p.status]}`}>
                     {p.status}
                   </span>
                 </div>
