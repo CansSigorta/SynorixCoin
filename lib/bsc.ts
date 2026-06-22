@@ -43,6 +43,10 @@ export const ACTIVE_BSC: BscNetwork =
 export const BSC_RECEIVER: string =
   process.env.NEXT_PUBLIC_BSC_RECEIVER || "0xCF9f877f80a488B38609234575d8b251c7b76c8e";
 
+/** Pause buying until real USDT liquidity is funded (avoids selling at an
+ *  unbacked price). Flip to false once the pool is backed by real USDT. */
+export const BUY_PAUSED = true;
+
 type Eip1193 = {
   request: (args: { method: string; params?: unknown[] }) => Promise<unknown>;
   on?: (event: string, handler: (...args: unknown[]) => void) => void;

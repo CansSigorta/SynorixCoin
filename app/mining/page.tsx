@@ -49,12 +49,18 @@ export default function MiningPage() {
       <div className="space-y-4">
         <Step n={1} title="Get the Synorix node">
           <p>
-            Build from source (Linux is supported by CI). Clone the repo and follow the build steps:
+            <span className="font-medium text-white">Easiest — download the prebuilt Linux binary</span> (no
+            compiling needed):
           </p>
-          <code className={code}>git clone {REPO}.git</code>
+          <p>
+            <a href={`${REPO}/releases/latest`} className="inline-block rounded-lg bg-synorix-cyan px-4 py-2 text-sm font-semibold text-synorix-ink">
+              ⬇ Download node (Linux x64)
+            </a>
+          </p>
+          <code className={code}>tar xzf synorix-mainnet-linux-x64.tar.gz &amp;&amp; cd synorix-mainnet</code>
           <p className="text-zinc-400">
-            Source &amp; build instructions: <a href={REPO} className="text-synorix-cyan underline">{REPO}</a>.
-            This produces <span className="font-mono text-zinc-200">synorixd</span> (the node) and{" "}
+            Prefer to build it yourself? Clone <a href={REPO} className="text-synorix-cyan underline">{REPO}</a>{" "}
+            and compile. Either way you get <span className="font-mono text-zinc-200">synorixd</span> (node) and{" "}
             <span className="font-mono text-zinc-200">synorix-cli</span>.
           </p>
         </Step>

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useWallet } from "@/components/WalletProvider";
-import { ACTIVE_BSC, BSC_RECEIVER, connectMetaMask, ensureBscChain, hasMetaMask, payUsdt } from "@/lib/bsc";
+import { ACTIVE_BSC, BSC_RECEIVER, BUY_PAUSED, connectMetaMask, ensureBscChain, hasMetaMask, payUsdt } from "@/lib/bsc";
 import { GlassCard } from "@/components/ui";
 
 type Quote = { side: string; usdt_in?: number; snrx_out?: number; price: number; new_price: number; error?: string };
@@ -139,7 +139,11 @@ export function BuyPanel() {
 
       {/* Action */}
       <div className="mt-5">
-        {!hasMetaMask() ? (
+        {BUY_PAUSED ? (
+          <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-center text-sm text-amber-200">
+            Buying is temporarily paused while we finalize liquidity. Check back soon. ⏳
+          </div>
+        ) : !hasMetaMask() ? (
           <a href="https://metamask.io/download/" target="_blank" rel="noopener noreferrer"
             className="block w-full rounded-xl border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white hover:border-synorix-cyan/50">
             Install MetaMask
