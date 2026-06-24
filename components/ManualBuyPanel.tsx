@@ -73,10 +73,7 @@ export function ManualBuyPanel() {
   return (
     <GlassCard className="p-6">
       <h3 className="mb-1 text-lg font-semibold text-white">Buy with USDT from any exchange</h3>
-      <p className="mb-3 text-xs text-zinc-400">Works from Binance, Bybit, Trust Wallet — any source. Send USDT, then paste the tx hash.</p>
-      <div className="mb-4 rounded-xl border border-amber-500/25 bg-amber-500/[0.06] p-3 text-[11px] leading-relaxed text-amber-200/90">
-        Early stage: you can buy now, but selling back isn&apos;t available yet. Buy only what you&apos;re comfortable holding.
-      </div>
+      <p className="mb-4 text-xs text-zinc-400">Works from Binance, Bybit, Trust Wallet — any source. Send USDT, then paste the tx hash.</p>
 
       <ol className="space-y-4 text-sm">
         <li>

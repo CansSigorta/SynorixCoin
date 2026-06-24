@@ -75,7 +75,7 @@ export function SellPanel() {
       <GlassCard className="p-6">
         <h3 className="mb-3 text-lg font-semibold text-white">Sell SNRX for USDT</h3>
         <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center text-sm text-zinc-400">
-          Selling isn&apos;t available yet — it opens once the USDT liquidity pool is funded. Buying is live now. ⏳
+          Selling is not available right now.
         </div>
       </GlassCard>
     );
