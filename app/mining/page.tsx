@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MiningCalculator } from "@/components/MiningCalculator";
 
 export const metadata = {
   title: "Mine SNRX — Synorix",
@@ -45,6 +46,8 @@ export default function MiningPage() {
           <span className="text-zinc-500">Network</span><span className="text-right font-medium">Mainnet — live</span>
         </div>
       </div>
+
+      <div className="mb-8"><MiningCalculator /></div>
 
       <div className="space-y-4">
         <Step n={1} title="Get the Synorix node">

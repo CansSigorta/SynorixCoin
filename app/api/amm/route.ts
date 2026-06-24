@@ -6,9 +6,10 @@ export const runtime = "nodejs";
 
 const AMM = process.env.SNRX_AMM_API || "http://161.97.180.76:3001/api/amm";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const wantHistory = req.nextUrl.searchParams.get("history");
   try {
-    const r = await fetch(`${AMM}/price`, { cache: "no-store" });
+    const r = await fetch(`${AMM}/${wantHistory ? "history" : "price"}`, { cache: "no-store" });
     return NextResponse.json(await r.json());
   } catch (e) {
     return NextResponse.json({ error: String((e as Error)?.message || e) }, { status: 500 });

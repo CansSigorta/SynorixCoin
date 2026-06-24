@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { BuyPanel } from "@/components/BuyPanel";
 import { ManualBuyPanel } from "@/components/ManualBuyPanel";
 import { SellPanel } from "@/components/SellPanel";
+import { PriceChart } from "@/components/PriceChart";
 import { GlassCard } from "@/components/ui";
 
 type Price = { price: number; error?: string };
@@ -36,6 +37,8 @@ export default function SwapPage() {
         <div className="mt-1 text-3xl font-extrabold">{price && !price.error ? `$${fnum(price.price, 6)}` : "…"}</div>
         <div className="mt-2 text-xs text-zinc-500">Live market price · moves with demand</div>
       </GlassCard>
+
+      <div className="mb-4"><PriceChart /></div>
 
       <div className="mb-4 grid grid-cols-2 gap-2 rounded-xl bg-synorix-ink/60 p-1">
         {(["buy", "sell"] as const).map((s) => (
