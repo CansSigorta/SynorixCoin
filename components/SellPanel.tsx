@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useWallet } from "@/components/WalletProvider";
+import { SELL_OPEN } from "@/lib/bsc";
 import { GlassCard } from "@/components/ui";
 
 // SNRX reserve address — sold SNRX is sent here; the owner then pays USDT by hand.
@@ -68,6 +69,17 @@ export function SellPanel() {
   }, [amount, bsc, active, unlocked, send, balance]);
 
   const busy = phase === "sending";
+
+  if (!SELL_OPEN) {
+    return (
+      <GlassCard className="p-6">
+        <h3 className="mb-3 text-lg font-semibold text-white">Sell SNRX for USDT</h3>
+        <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-center text-sm text-zinc-400">
+          Selling isn&apos;t available yet — it opens once the USDT liquidity pool is funded. Buying is live now. ⏳
+        </div>
+      </GlassCard>
+    );
+  }
 
   return (
     <GlassCard className="p-6">

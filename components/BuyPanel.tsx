@@ -100,6 +100,11 @@ export function BuyPanel() {
         </span>
       </div>
 
+      <div className="mb-4 rounded-xl border border-amber-500/25 bg-amber-500/[0.06] p-3 text-[11px] leading-relaxed text-amber-200/90">
+        Early stage: you can buy now, but selling back isn&apos;t available yet. Buy only what you&apos;re
+        comfortable holding while the project grows.
+      </div>
+
       {/* Amount */}
       <label className="mb-1 block text-xs uppercase tracking-wide text-zinc-500">You pay (USDT)</label>
       <input
