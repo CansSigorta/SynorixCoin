@@ -14,6 +14,17 @@ function load(): Store {
 }
 function persist(s: Store) { localStorage.setItem(KEY, JSON.stringify(s)); }
 
+export type SentTx = { txid: string; to: string; amount: number; ts: number };
+const sentKey = (id: string) => `snrx_sent_${id}`;
+export function loadSent(id: string): SentTx[] {
+  if (typeof window === "undefined") return [];
+  try { return JSON.parse(localStorage.getItem(sentKey(id)) || "[]"); } catch { return []; }
+}
+function recordSent(id: string, e: SentTx) {
+  const arr = loadSent(id); arr.unshift(e);
+  try { localStorage.setItem(sentKey(id), JSON.stringify(arr.slice(0, 100))); } catch {}
+}
+
 type Ctx = {
   ready: boolean;
   wallets: { id: string; name: string }[];
@@ -31,6 +42,7 @@ type Ctx = {
   reveal: (pw: string) => Promise<string>;
   resetAll: () => void;
   refresh: () => void;
+  sent: SentTx[];
 };
 
 const WalletCtx = createContext<Ctx | null>(null);
@@ -46,6 +58,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const [balance, setBalance] = useState<{ spendable: number; immature: number } | null>(null);
   const [address, setAddress] = useState("");
   const [conn, setConn] = useState<"on" | "warn" | "off">("warn");
+  const [sent, setSent] = useState<SentTx[]>([]);
   // in-memory unlocked passwords (session only) — MetaMask-style unlock-once
   const pwRef = useRef<Map<string, string>>(new Map());
   const [unlockedTick, setUnlockedTick] = useState(0);
@@ -57,7 +70,8 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
   const refresh = useCallback(async () => {
     const w = store.wallets.find((x) => x.id === store.activeId) || store.wallets[0];
-    if (!w) { setBalance(null); setAddress(""); return; }
+    if (!w) { setBalance(null); setAddress(""); setSent([]); return; }
+    setSent(loadSent(w.id));
     try { setAddress(wallet.firstReceiveAddress(w)); } catch {}
     try { const b = await wallet.getBalance(w); setBalance({ spendable: b.spendable, immature: b.immature }); setConn("on"); }
     catch { setConn("off"); }
@@ -75,7 +89,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const ctx: Ctx = {
     ready,
     wallets: store.wallets.map((w) => ({ id: w.id, name: w.name })),
-    active, balance, address, conn, unlocked,
+    active, balance, address, conn, unlocked, sent,
     refresh,
     createWallet: async (name, pw) => {
       const { meta, mnemonic } = await wallet.createWallet(name || "Main", pw);
@@ -101,6 +115,8 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       const pw = pwRef.current.get(active.id);
       if (!pw) throw new Error("Wallet locked");
       const out = await wallet.send(active, pw, to.trim(), amount);
+      recordSent(active.id, { txid: out.txid, to: to.trim(), amount, ts: Date.now() });
+      setSent(loadSent(active.id));
       refresh();
       return out;
     },

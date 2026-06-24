@@ -123,6 +123,18 @@ export async function getBalance(meta: WalletMeta): Promise<{ spendable: number;
   return { spendable: sp / SATS, immature: im / SATS, total: (sp + im) / SATS };
 }
 
+// Received-and-held outputs (incoming history). Full spent-history needs an
+// address index the node doesn't keep, so this shows current holdings by tx.
+export type Received = { txid: string; amount: number; height?: number; coinbase?: boolean; confs: number };
+export async function getReceived(meta: WalletMeta): Promise<Received[]> {
+  const slots = deriveSet(meta);
+  const unspents = await scanUtxos(slots.map((s) => s.address));
+  const tip = Number(await rpc<number>("getblockcount"));
+  return unspents
+    .map((u) => ({ txid: u.txid, amount: u.amount, height: u.height, coinbase: u.coinbase, confs: u.height ? tip - u.height + 1 : 0 }))
+    .sort((a, b) => (b.height || 0) - (a.height || 0));
+}
+
 export async function send(meta: WalletMeta, password: string, to: string, amountSnrx: number): Promise<{ txid: string; fee: number }> {
   const n = net(meta);
   const mnemonic = await decrypt(meta.enc, password); // throws on wrong password
