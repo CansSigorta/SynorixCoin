@@ -11,6 +11,7 @@ export async function GET(req: NextRequest) {
   const id = req.nextUrl.searchParams.get("id") || "";
   let path: string | null = null;
   if (action === "info") path = "/info";
+  else if (action === "network") path = "/network";
   else if (action === "blocks") path = "/blocks";
   else if (action === "block") path = `/block/${encodeURIComponent(id)}`;
   else if (action === "tx") path = `/tx/${encodeURIComponent(id)}`;

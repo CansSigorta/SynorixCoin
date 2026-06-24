@@ -20,8 +20,8 @@ export const NAV_LINKS = [
   { href: "/wallet", label: "Wallet" },
   { href: "/swap", label: "Buy SNRX" },
   { href: "/mining", label: "Mine" },
+  { href: "/network", label: "Network" },
   { href: "/explorer", label: "Explorer" },
-  { href: "/tokenomics", label: "Tokenomics" },
 ] as const;
 
 /** Fuller, grouped links for the footer. */
