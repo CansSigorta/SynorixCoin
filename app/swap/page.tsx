@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { BuyPanel } from "@/components/BuyPanel";
+import { ManualBuyPanel } from "@/components/ManualBuyPanel";
 import { SellPanel } from "@/components/SellPanel";
 import { GlassCard } from "@/components/ui";
 
@@ -15,6 +16,7 @@ function fnum(n: number, d = 6) {
 export default function SwapPage() {
   const [price, setPrice] = useState<Price | null>(null);
   const [side, setSide] = useState<"buy" | "sell">("buy");
+  const [method, setMethod] = useState<"metamask" | "exchange">("metamask");
 
   const loadPrice = useCallback(async () => {
     try { const r = await fetch("/api/amm"); setPrice(await r.json()); } catch {}
@@ -44,7 +46,19 @@ export default function SwapPage() {
         ))}
       </div>
 
-      {side === "buy" ? <BuyPanel /> : <SellPanel />}
+      {side === "buy" ? (
+        <>
+          <div className="mb-4 grid grid-cols-2 gap-2 rounded-xl border border-white/10 bg-synorix-ink/40 p-1">
+            {([["metamask", "⚡ MetaMask"], ["exchange", "🏦 Exchange / wallet"]] as const).map(([m, label]) => (
+              <button key={m} onClick={() => setMethod(m)}
+                className={`rounded-lg py-2 text-xs font-semibold transition ${method === m ? "bg-white/10 text-white ring-1 ring-synorix-cyan/30" : "text-zinc-400 hover:text-white"}`}>
+                {label}
+              </button>
+            ))}
+          </div>
+          {method === "metamask" ? <BuyPanel /> : <ManualBuyPanel />}
+        </>
+      ) : <SellPanel />}
 
       <p className="mt-4 text-[11px] leading-relaxed text-zinc-500">
         Price is set by a live liquidity pool — larger trades move it more. Buys are instant; sell payouts
