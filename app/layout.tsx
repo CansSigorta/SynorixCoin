@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WalletProvider } from "@/components/WalletProvider";
+import { SWRegister } from "@/components/SWRegister";
 import { SITE } from "@/lib/site";
 
 const outfit = Outfit({
@@ -63,6 +64,12 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
     apple: "/logo.png",
   },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Synorix",
+  },
 };
 
 const jsonLd = {
@@ -87,6 +94,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <SWRegister />
         <WalletProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
